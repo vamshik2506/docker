@@ -1,0 +1,6 @@
+docker images ---> shows the images
+docker build -t image name .  ----> to create a image 
+docker run -it --name name of container image name /bin/bash ----> to create an container from image
+docker run --name name of container -d -p {local host}80:80{conatiner} image name /bin/bash  -----> used to map the host and container and it create container
+docker attach container name ----> to switch into  container
+docker run -it --name container name --privileged=true --volumes -from container name /bin/bash ----> used to share volumes  
