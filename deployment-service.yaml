@@ -3,10 +3,10 @@ kind: Deployment
 metadata:
   name: docker-deployment
 spec:
+  replicas: 2
   selector:
     matchLabels:
       app: docker
-  replicas: 2
   template:
     metadata:
       labels:
@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: docker
-          image: $IMAGE_NAME:$BUILD_NUMBER  # Replace with correct image reference
+          image: $IMAGE_NAME:$BUILD_NUMBER  # Image dynamically set in Jenkins pipeline
           imagePullPolicy: Always
           ports:
             - containerPort: 80
@@ -28,7 +28,7 @@ metadata:
 spec:
   selector:
     app: docker
-  type: NodePort  # Corrected indentation
+  type: NodePort  # Fixed indentation issue
   ports:
     - protocol: TCP
       port: 80
