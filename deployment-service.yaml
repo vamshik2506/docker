@@ -30,7 +30,7 @@ metadata:
 spec:
   selector:
     app: docker
-  type: LoadBalancer  # Change from NodePort to LoadBalancer
+  type: NodePort  # Change from NodePort to LoadBalancer
   ports:
     - protocol: TCP
       port: 80
