@@ -12,9 +12,11 @@ spec:
       labels:
         app: docker
     spec:
+      imagePullSecrets:
+        - name: regcred
       containers:
         - name: docker
-          image: $IMAGE_NAME:$BUILD_NUMBER  # Image dynamically set in Jenkins pipeline
+          image: vamshi2506/vamshi2506_devops:latest  # Updated with actual image reference
           imagePullPolicy: Always
           ports:
             - containerPort: 80
@@ -28,9 +30,9 @@ metadata:
 spec:
   selector:
     app: docker
-  type: NodePort  # Fixed indentation issue
+  type: NodePort
   ports:
     - protocol: TCP
       port: 80
       targetPort: 80
-      nodePort: 30080  # Must be between 30000-32767
+      nodePort: 30080
