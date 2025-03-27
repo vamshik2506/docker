@@ -2,96 +2,121 @@
 
 Some of the most commonly used Docker commands are:
 
-## Listing Docker Images
+### docker images
+
+Lists Docker images on the host machine.
+
 ```sh
 docker images
 ```
-Lists Docker images on the host machine.
 
-## Building an Image
+### docker build
+
+Builds an image from a Dockerfile.
+
 ```sh
 docker build -t my-image .
 ```
-Builds an image from a Dockerfile in the current directory and tags it as `my-image`.
 
-## Running a Container
-```sh
-docker run -d my-image
-```
-Runs a container in the background from `my-image` and prints the container ID.
+### docker run
+
+Runs a Docker container.
 
 ```sh
-docker run -p 8080:80 my-image
+docker run my-image
 ```
-Maps port `8080` on the host to port `80` in the container.
 
-Use `docker run --help` to see more options.
+There are many arguments which you can pass to this command, for example:
 
-## Listing Running Containers
+```sh
+docker run -d my-image  # Run container in background and print container ID
+```
+
+```sh
+docker run -p 8080:80 my-image  # Port mapping
+```
+
+Use `docker run --help` to look into more arguments.
+
+### docker ps
+
+Lists running containers on the host machine.
+
 ```sh
 docker ps
 ```
-Lists running containers on the host machine.
 
-## Stopping a Container
+### docker stop
+
+Stops a running container.
+
 ```sh
 docker stop <container_id>
 ```
-Stops a running container.
 
-## Starting a Stopped Container
+### docker start
+
+Starts a stopped container.
+
 ```sh
 docker start <container_id>
 ```
-Starts a stopped container.
 
-## Removing a Stopped Container
+### docker rm
+
+Removes a stopped container.
+
 ```sh
 docker rm <container_id>
 ```
-Removes a stopped container.
 
-## Removing an Image
-```sh
-docker rmi my-image
-```
+### docker rmi
+
 Removes an image from the host machine.
 
-## Pulling an Image
 ```sh
-docker pull ubuntu
+docker rmi <image_id>
 ```
+
+### docker pull
+
 Downloads an image from the configured registry.
 
-## Pushing an Image
 ```sh
-docker push my-image
+docker pull <image_name>
 ```
+
+### docker push
+
 Uploads an image to the configured registry.
 
-## Executing a Command in a Running Container
 ```sh
-docker exec -it <container_id> bash
+docker push <image_name>
 ```
-Runs an interactive bash shell inside a running container.
 
-## Managing Docker Networks
-```sh
-docker network ls
-```
-Lists all Docker networks.
+### docker exec
+
+Runs a command in a running container.
 
 ```sh
-docker network create my-network
+docker exec -it <container_id> /bin/bash
 ```
-Creates a new Docker network named `my-network`.
+
+### docker network
+
+Manages Docker networks such as creating and removing networks, and connecting containers to networks.
 
 ```sh
-docker network connect my-network <container_id>
+docker network ls  # List networks
 ```
-Connects a container to the specified network.
 
 ```sh
-docker network rm my-network
+docker network create my-network  # Create a new network
 ```
-Removes a Docker network.
+
+```sh
+docker network connect my-network <container_id>  # Connect a container to a network
+```
+
+```sh
+docker network disconnect my-network <container_id>  # Disconnect a container from a network
